@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Score List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="sass/style.css">
 </head>
 
 <body>
@@ -35,26 +36,31 @@
                 </form>
             </div>
             <div class="col-6">
-                <div class="card border-primary"  style="height: 24rem;">
+                <div class="card border-primary" style="height: 24rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <input type="text" class="form-control" id="studentemail"
                                     placeholder="Enter student email">
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control" id="exampleInputscore1"
+                                <input type="text" class="form-control" id="studentscore"
                                     placeholder="Enter score">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="button" class="btn btn-danger">Add Score</button>
+                                <button type="button" class="btn btn-danger" onclick="addScoresToStudents()">Add Score</button>
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <p>Scores of the student</p>
+                                <ul id="scoresofstd"></ul>
+                            </div>
+                            <div class="col-6">
+                                <p>Average score of the student</p>
+                                <ul></ul>
                             </div>
                         </div>
                     </div>
@@ -65,21 +71,22 @@
             <div class="col-12">
                 <h3>Students List</h3>
                 <table class="table">
-                        <thead>
-                          <tr class="table-danger">
+                    <thead>
+                        <tr class="table-danger">
+                            <!-- <th scope="col">#</th> -->
                             <th scope="col">Name</th>
                             <th scope="col">Surname</th>
                             <th scope="col">Email</th>
                             <th scope="col">Birthday</th>
-                          </tr>
-                        </thead>
-                        <tbody id="students">
-                        </tbody>
-                      </table>
-                    </div>
+                        </tr>
+                    </thead>
+                    <tbody id="students">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-        <script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>

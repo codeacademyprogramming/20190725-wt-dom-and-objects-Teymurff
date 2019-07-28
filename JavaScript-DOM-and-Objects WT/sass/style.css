@@ -1,0 +1,7 @@
+tr:hover {
+  color: #dc3545;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+/*# sourceMappingURL=style.css.map */

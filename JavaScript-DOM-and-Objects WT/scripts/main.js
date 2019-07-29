@@ -37,37 +37,24 @@ function Student(name, surname, email, birthday) {
 function addStudent() {
     let student = new Student(inputStdName.value, inputStdSurname.value, inputStdEmail.value, inputStdBirthday.value);
     studentsArray.push(student);
-    // showStudents();
     let trElem = document.createElement("tr");
     trElem.innerHTML = `<td>${inputStdName.value}</td><td>${inputStdSurname.value}</td><td>${inputStdEmail.value}</td><td>${inputStdBirthday.value}</td>`;
-        studentsList.appendChild(trElem);
         trElem.setAttribute("data-index", (studentsArray.length-1));
         trElem.className = "table-danger";
+        trElem.id = "tablerow";
         trElem.addEventListener("dblclick", function(){
         let stdIndex = this.getAttribute("data-index");
-        console.log(studentsArray[stdIndex].GetAverageScores());
+        let averagePointsOfStd = studentsArray[stdIndex].GetAverageScores()
+        alert("Average score of the student is:" + " " + averagePointsOfStd);
     });
-    students.appendChild(trElem);
+    validate();
+    studentsList.appendChild(trElem);
     inputStdName.value = "";
     inputStdSurname.value = "";
     inputStdEmail.value = "";
     inputStdBirthday.value = "";
 
 }
-
-// function showStudents() {
-//     let rows = "";
-//     for (let i = 0; i < studentsArray.length; i++) {
-//         rows += `<tr class="table-danger" id="tablerow">
-//         <th class="scope">${i + 1}</th>
-//         <td>${studentsArray[i].Name}</td>
-//         <td>${studentsArray[i].Surname}</td>
-//         <td>${studentsArray[i].Email}</td>
-//         <td>${studentsArray[i].Birthday}</td>
-//         </tr>`
-//     }
-//     document.querySelector("#students").innerHTML = rows;
-// }
 
 function addScoresToStudents() {
     let inputsEquationIndex = studentsArray.findIndex((val, ind, arr) => {
@@ -92,3 +79,27 @@ function addScoresToStudents() {
 
 }
 
+function validateEmail(messaging) {
+    let forEmail  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return forEmail.test(messaging);
+  }
+  
+  function validate() {
+      let message = document.getElementById("errormessage")
+      let messaging = document.getElementById("email").value;
+      message.innerHTML = "";
+  
+    if (validateEmail(messaging)) {
+        message.innerHTML= messaging + " is correct";
+        message.style.color = "green";
+    } else {
+        message.innerHTML = messaging + " is not correct";
+        message.style.color = "red";
+        let buttonSave = document.getElementById("buto")[0];
+        buttonSave.removeAttribute("onclick"); 
+    }
+    return false;
+  }
+
+
+  
